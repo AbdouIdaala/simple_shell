@@ -13,10 +13,10 @@
 extern char **environ;
 
 void prompt(void);
-char *_getline(void);
+char *_getline(int status);
 char **parseline(char *line);
 char *check_access(char *command);
-void execute(char **args);
+int execute(char **args);
 void free_arr(char **args);
 
 #endif /* _SHELL_H */

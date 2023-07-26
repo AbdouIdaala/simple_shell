@@ -31,13 +31,14 @@ void free_arr(char **args)
 
 /**
  * _getline - get the line entered by the user
+ * @status: the exit status
  *
  * Return: the line on success
  */
-char *_getline(void)
+char *_getline(int status)
 {
 	ssize_t nread = 0;
-	size_t len = 0;
+	size_t len = 0, i = 0;
 	char *line = NULL, *end = NULL;
 	char *linecopy = NULL;
 
@@ -51,7 +52,18 @@ char *_getline(void)
 	if (strcmp(line, "exit") == 0)
 	{
 		free(line);
-		exit(EXIT_SUCCESS);
+		exit(WEXITSTATUS(status));
+	}
+	if (strcmp(line, "env") == 0)
+	{
+		while (environ[i])
+		{
+			write(STDOUT_FILENO, environ[i], strlen(environ[i]));
+			write(STDOUT_FILENO, "\n", 1);
+			i++;
+		}
+		free(line);
+		return (NULL);
 	}
 	for (end = line; (*end == ' ' || *end == '\t'); end++)
 	;

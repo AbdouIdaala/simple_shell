@@ -40,7 +40,7 @@ char *check_access(char *command)
  *
  * Return: void
  */
-void execute(char **args)
+int execute(char **args)
 {
 	pid_t pid;
 	int status = 0;
@@ -67,4 +67,5 @@ void execute(char **args)
 		perror(args[0]);
 		free_arr(args);
 	}
+	return (status);
 }
