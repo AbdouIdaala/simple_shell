@@ -12,7 +12,7 @@ int main(void)
 
 	while (1)
 	{
-		prompt();
+		/*prompt();*/
 		line = _getline();
 		if (*line != '\0')
 		{
