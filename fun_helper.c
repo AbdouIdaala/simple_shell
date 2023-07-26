@@ -44,7 +44,6 @@ char *_getline(void)
 	nread = getline(&line, &len, stdin);
 	if (nread == -1)
 	{
-		write(STDOUT_FILENO, "\n", 1);
 		free(line);
 		exit(EXIT_SUCCESS);
 	}
