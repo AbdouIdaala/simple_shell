@@ -12,7 +12,8 @@ int main(void)
 
 	while (1)
 	{
-		/*prompt();*/
+		if (isatty(STDIN_FILENO))
+			prompt();
 		line = _getline();
 		if (*line != '\0')
 		{
